@@ -1,0 +1,78 @@
+.closedGame {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  transform: translateY(-51vh) translateX(-100vw);
+}
+
+.openGame{
+  display: flex;
+  position: fixed;
+  width: 100%;
+  transition: all 1.5s ease;
+  animation: showGame 1.5s ease;
+  transform: translateY(-51vh) translateX(0vw);
+}
+
+@keyframes showGame {
+  from {
+    transform: translateY(-51vh) translateX(-100vw);
+  }
+  to {
+    transform: translateY(-51vh) rotateY(0deg);
+  }
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  min-height: 45vh;
+
+}
+
+td {
+  height: 50px;
+  //background: aquamarine;
+  width: 50px;
+  //border: 1px solid #000;
+}
+
+
+.activeCell {
+  //background: #e91e63 !important;
+  background-image: url("../../../../assets/resources/cap/salida.png") !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.passCell {
+  //background: #e91e63 !important;
+  background-image: url("../../../../assets/resources/cap/cell-normal.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.exitCell {
+  background-image: url("../../../../assets/resources/cap/salida.png") !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.pozoCell {
+  background-image: url("../../../../assets/resources/cap/Fosa-new.png") !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.hunt-img {
+  width: 25%;
+  margin: auto;
+  display: flex;
+}
+
+
+

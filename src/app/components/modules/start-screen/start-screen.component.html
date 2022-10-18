@@ -1,0 +1,77 @@
+<div class="row mt-5 scale-0" id="section-start">
+  <div class="col-md-12">
+    <div class="card material-card">
+      <div class="card-body">
+        <div class="container">
+
+          <div class="row">
+            <div class="col-md-12">
+              <h2 class="title">Nueva Partida </h2>
+            </div>
+          </div>
+          <form [formGroup]="parameters">
+            <div class="row mt-5">
+              <div class="col-md-7 offset-md-1">
+                <h2 class="text">Indique el numero de celdas (Tablero N x N)</h2>
+                <div class="error-text" *ngIf="this.parameters.value.nroCell === '' && validate === true">
+                  El numero de celdas es requerido
+                </div>
+              </div>
+              <div class="col-md-2">
+                <input type="number" class="input-number" formControlName="nroCell" required>
+              </div>
+
+            </div>
+
+
+            <div class="row mt-3">
+              <div class="col-md-7 offset-md-1">
+                <h2 class="text">Numero de pozos </h2>
+                <div class="error-text" *ngIf="this.parameters.value.nroWells === '' && validate === true">
+                  El numero de pozos es requerido
+                </div>
+              </div>
+              <div class="col-md-2">
+                <input type="number" class="input-number" formControlName="nroWells" required>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-md-7 offset-md-1">
+                <h2 class="text">Numero de flechas </h2>
+                <div class="error-text" *ngIf="this.parameters.value.nroArrow === '' && validate === true">
+                  El numero de flechas es requerido
+                </div>
+              </div>
+              <div class="col-md-2">
+                <input type="number" class="input-number" formControlName="nroArrow" required>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-md-7 offset-md-1">
+                <div class="error-text" *ngIf="this.errorInfo !== '' && validate === true">
+                  {{errorInfo}}
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="row mt-5" (click)="startGame()">
+              <div class="col-md-12 text-center">
+                <button class="btn btn-hunt" formControlName="nroArrow">
+                  Comenzar
+                </button>
+              </div>
+            </div>
+
+          </form>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

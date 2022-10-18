@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '@fortawesome/fontawesome-free/scss/solid.scss';
+@import '@fortawesome/fontawesome-free/scss/regular.scss';
+@import '@fortawesome/fontawesome-free/scss/brands.scss';
+
+@import 'mdb-angular-ui-kit/assets/scss/mdb.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.material-card {
+  width: 75%;
+  margin: auto;
+  padding: 0;
+  border-radius: 5px;
+  border: 2px solid #33272a;
+  background: #fffffe;
+  display: flex;
+  min-height: 55vh;
+  max-height: 70vh;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.material-card::-webkit-scrollbar-track
+{
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+.material-card::-webkit-scrollbar
+{
+  width: 5px;
+  background-color: #F5F5F5;
+}
+
+.material-card::-webkit-scrollbar-thumb
+{
+  border-radius: 5px;
+  background-color: #ff8ba7;
+}
+
+.btn-hunt {
+  font-family: 'Press Start 2P', cursive;
+  background: #ff8ba7;
+  border-radius: 4px;
+  border: 2px solid #33272a;
+  color: #33272a;
+}
+
+.scale-0 {
+  transform: translateY(10vh) scale(0);
+}
+
+.scale-1 {
+  transform: translateY(10vh) scale(1);
+}
+

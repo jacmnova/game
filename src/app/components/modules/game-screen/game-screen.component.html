@@ -1,0 +1,46 @@
+<div class="row mt-5 closedGame" id="section-game" >
+  <div class="col-md-12">
+    <div class="card material-card">
+      <div class="card-body">
+        <div class="container">
+
+          <div class="row">
+            <div class="col-md-12">
+              <h2 class="title">Comienza el juego! </h2>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <table>
+                <tr *ngFor="let line of cells">
+                  <td *ngFor="let cell of line"
+                      [ngClass]="{'activeCell': cell.checked === true,
+                                  'passCell': cell.pass === true,
+                                  'exitCell': cell.exit === true}">
+                    <div *ngIf="cell.hunt">
+                    <img src="assets/resources/hunt/hunt-svg.svg" class="hunt-img">
+                    </div>
+                    <div *ngIf="cell.wells">
+                      <img src="assets/resources/cap/fosa.png" class="hunt-img">
+                    </div>
+                    <div *ngIf="cell.gold">
+                      <img src="assets/resources/cap/Group%208.png" class="hunt-img">
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-6">
+              <p *ngFor="let item of historial"> {{ item }}</p>
+            </div>
+          </div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

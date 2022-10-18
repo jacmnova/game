@@ -1,0 +1,207 @@
+
+
+.main-container {
+  background: #faeee7;
+  height: 100vh;
+  width: 100%;
+}
+
+.title {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.welcome {
+  color: #594a4e;
+  margin: auto;
+  text-align: center;
+}
+
+.hunt-title {
+  color: #ff8ba7;
+  margin: auto;
+  text-align: center;
+  font-size: 4vh;
+  margin-top: 3vh;
+}
+
+hr {
+  width: 45%;
+  margin: auto;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  background: #33272a;
+  border: 4px solid #33272a;
+  border-radius: 20px;
+}
+
+#header {
+  transition: all 1.5s ease;
+  transform: translateY(30vh);
+  opacity: 1;
+  animation: upSideTitle 1.5s ease;
+  display: flex;
+  position: fixed;
+  width: 100%;
+}
+
+@keyframes upSideTitle {
+  from {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(30vh);
+    opacity: 1;
+  }
+}
+
+#play-section {
+  transition: all 1.5s ease;
+  animation-delay: 2s;
+  animation: upSidePlay 1.5s ease;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  transform: translateY(55vh) scale(1.5);
+}
+
+
+@keyframes upSidePlay {
+  from {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(55vh) scale(1.5);
+    opacity: 1;
+  }
+}
+
+#logoPlay {
+  width: 250px;
+  opacity: 1;
+  display: flex;
+  position: fixed;
+  transition: all 1.5s ease;
+
+
+}
+
+.logoPlay {
+  transform: rotateZ(12deg) translateY(69vh);
+  animation-delay: 3s;
+  animation: upSideHunt 3.5s ease;
+}
+
+@keyframes upSideHunt {
+  from {
+    transform: rotateZ(12deg) translateY(169vh);
+    opacity: 0;
+  }
+  to {
+    transform: rotateZ(12deg) translateY(69vh);
+    opacity: 1;
+  }
+}
+
+.logoPlay-hidden {
+  transition: all 1.5s ease;
+  animation-delay: 3s;
+  animation: downSideHunt 3.5s ease;
+
+}
+
+@keyframes downSideHunt {
+  from {
+    transform: rotateZ(12deg) translateY(69vh);
+    opacity: 1;
+  }
+  to {
+    transform: rotateZ(12deg) translateY(169vh);
+    opacity: 0;
+  }
+}
+
+.hidden-animation {
+  opacity: 0 !important;
+  display: none !important;
+}
+
+
+.upHeader {
+  transform: translateY(-5vh) !important;
+  transition: all 1.5s ease;
+  animation-delay: 3s;
+  animation: upHunt 3.5s ease;
+}
+
+.hiddenText {
+  opacity: 0;
+  transition: all 1.5s ease;
+  animation-delay: 1s;
+  animation: hiddenTextAnimation 1s ease;
+}
+
+.hiddenHR {
+  opacity: 0;
+  transition: all 1.5s ease;
+  animation-delay: 1s;
+  animation: hiddenHRAnimation .5s ease;
+}
+
+
+.hiddenBtn {
+  opacity: 0;
+  transition: all 1.5s ease;
+  animation-delay: 1s;
+  animation: hiddenBtnStart .5s ease;
+  transform: translateY(55vh) scale(0);
+}
+
+
+@keyframes upHunt {
+  from {
+    transform: translateY(30vh);
+  }
+  to {
+    transform: translateY(-5vh);
+  }
+}
+
+@keyframes hiddenTextAnimation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes hiddenHRAnimation {
+  from {
+    opacity: 0.25;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes hiddenBtnStart {
+  from {
+    opacity: 1;
+    transform: translateY(55vh) scale(1.5);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(55vh) scale(0);
+  }
+}
+
+
+
+
+
+
+
+

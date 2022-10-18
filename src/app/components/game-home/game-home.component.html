@@ -1,0 +1,33 @@
+<div class="container-fluid main-container p-5">
+  <div class="row" id="header">
+    <div class="col-md-12" >
+      <h1 class="title welcome" id="welcome-text">BIENVENIDO </h1>
+      <hr id="divider-text">
+      <h1 class="title hunt-title">HUNT THE WUMPUS</h1>
+    </div>
+  </div>
+
+  <div class="row" id="play-section">
+    <div class="col-md-12">
+      <button class="btn btn-hunt" (click)="startMenu()">
+        INICIAR
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <img src="/assets/resources/hunt/hunt-svg.svg" class="logoPlay" id="logoPlay">
+    </div>
+  </div>
+
+  <app-start-screen (start)="startGame($event)"></app-start-screen>
+
+  <app-game-screen [parameters]="parametersGame"></app-game-screen>
+
+
+
+</div>
+
+
+

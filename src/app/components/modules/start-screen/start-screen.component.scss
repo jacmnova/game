@@ -1,0 +1,60 @@
+.title {
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 20px;
+  color: #ff8ba7;
+}
+
+.text {
+  font-family: 'Roboto Condensed', cursive;
+  margin: 0;
+}
+
+
+
+
+.show-card-panel {
+  transition: all 1.5s ease;
+  animation: showPanel 1.5s ease;
+  transform: translateY(10vh) scale(1);
+}
+
+.input-number {
+  text-align: center;
+  width: 100%;
+  border-radius: 5px;
+  border: 2px solid #33272a;
+  font-family: 'Roboto Condensed', cursive;
+}
+
+@keyframes showPanel {
+  from {
+    transform: translateY(10vh) scale(0);
+  }
+  to {
+    transform: translateY(10vh) scale(1);
+  }
+}
+
+.error-text {
+  color: #e91e63;
+  font-size: 12px;
+  font-weight: bolder;
+}
+
+.closedParametersCard {
+  opacity: 0;
+  transition: all 1.5s ease;
+  animation-delay: 1s;
+  animation: parametersGameCardClosed .5s ease;
+  transform: translateY(10vh) scale(1) rotateY(90deg);
+}
+
+@keyframes parametersGameCardClosed {
+  from {
+    transform: translateY(10vh) scale(1) rotateY(0deg);
+  }
+  to {
+    transform: translateY(10vh) scale(1) rotateY(90deg);
+  }
+}
