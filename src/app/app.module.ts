@@ -26,13 +26,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { StartScreenComponent } from './components/modules/start-screen/start-screen.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { GameScreenComponent } from './components/modules/game-screen/game-screen.component';
+import { ModalInicioComponent } from './components/modals/modal-inicio/modal-inicio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GameHomeComponent,
     StartScreenComponent,
-    GameScreenComponent
+    GameScreenComponent,
+    ModalInicioComponent
   ],
   imports: [
     BrowserModule,

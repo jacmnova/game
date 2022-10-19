@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameHomeComponent implements OnInit {
   parametersGame = null
+  startApp = false
   constructor() { }
 
   ngOnInit(): void {
@@ -63,6 +64,7 @@ export class GameHomeComponent implements OnInit {
     panel.classList.add("closedParametersCard");
     game.classList.add("openGame");
     game.classList.remove("closedGame");
+    this.startApp = true
     // panel.classList.remove("show-card-panel");
   }
 

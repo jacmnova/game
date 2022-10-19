@@ -23,7 +23,10 @@
 
   <app-start-screen (start)="startGame($event)"></app-start-screen>
 
-  <app-game-screen [parameters]="parametersGame"></app-game-screen>
+  <app-game-screen
+    [parameters]="parametersGame"
+    [starApp]="startApp">
+  </app-game-screen>
 
 
 

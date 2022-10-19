@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {coerceStringArray} from "@angular/cdk/coercion";
+import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
+import {ModalInicioComponent} from "../../modals/modal-inicio/modal-inicio.component";
 
 @Component({
   selector: 'app-game-screen',
@@ -7,8 +9,9 @@ import {coerceStringArray} from "@angular/cdk/coercion";
   styleUrls: ['./game-screen.component.scss']
 })
 export class GameScreenComponent implements OnInit {
-
+  modalIncio: MdbModalRef<ModalInicioComponent> | null = null;
   @Input() parameters = null;
+  @Input() starApp = false;
   cells = []
   positionActivate = []
   huntPos = []
@@ -18,14 +21,20 @@ export class GameScreenComponent implements OnInit {
   time: number = 0;
   interval;
 
-  constructor() { }
+  constructor(private modalService: MdbModalService) { }
 
   ngOnInit(): void {
 
   }
 
   ngOnChanges(): void{
-    this.loadGame()
+    if (this.starApp === true) {
+      this.modalIncio = this.modalService.open(ModalInicioComponent)
+      this.modalIncio.onClose.subscribe((message: any) => {
+        this.loadGame()
+      });
+    }
+
   }
 
   loadGame() {
@@ -67,6 +76,7 @@ export class GameScreenComponent implements OnInit {
     this.startTimer()
     this.time = 0;
     this.historial = []
+    this.checkData()
   }
 
   createHunt() {
@@ -168,22 +178,124 @@ export class GameScreenComponent implements OnInit {
     }
   }
 
+  checkData() {
+    console.log(this.positionActivate[0], 'POSITION 0')
+    console.log(this.positionActivate[1], 'POSITION 1')
+    console.log(this.parameters.nroCell - 1, 'CELLS')
+
+    let position0 = this.positionActivate[0]
+    let position1 = this.positionActivate[1]
+    let cells = this.parameters.nroCell - 1
+
+    let olor = false
+    let brisa = false
+    let resplandor = false
+    let pared = false
+
+    console.log(position1 + 1 < cells, 'DERECHA')
+    console.log(position0 - 1 < cells, 'ARRIBA')
+    console.log(position0 + 1 < cells, 'ABAJO')
+    console.log(position1 -  1 >= 0, 'IZQUIERDA')
+
+    if (position1 + 1 <= cells) {
+      //Cuadrante Derecha
+      if (this.cells[this.positionActivate[0]][this.positionActivate[1] + 1].hunt === true) {
+        olor = true
+      }
+
+      if (this.cells[this.positionActivate[0]][this.positionActivate[1] + 1].wells === true) {
+        brisa = true
+      }
+
+      if (this.cells[this.positionActivate[0]][this.positionActivate[1] + 1].gold === true) {
+        resplandor = true
+      }
+    }
+
+
+    if (position0 - 1 < cells) {
+      //Cuadrante Arriba
+      if (this.cells[this.positionActivate[0] - 1][this.positionActivate[1]].hunt === true) {
+        olor = true
+      }
+
+      if (this.cells[this.positionActivate[0] - 1][this.positionActivate[1]].wells === true) {
+        brisa = true
+      }
+
+      if (this.cells[this.positionActivate[0] - 1][this.positionActivate[1]].gold === true) {
+        resplandor = true
+      }
+    }
+
+
+    if (position0 + 1 < cells) {
+      //Cuadrante Abajo
+      if (this.cells[this.positionActivate[0] + 1][this.positionActivate[1]].hunt === true) {
+        olor = true
+      }
+
+      if (this.cells[this.positionActivate[0] + 1][this.positionActivate[1]].wells === true) {
+        brisa = true
+      }
+
+      if (this.cells[this.positionActivate[0] + 1][this.positionActivate[1]].gold === true) {
+        resplandor = true
+      }
+    }
+
+
+    if (position1 -  1 >= 0) {
+      //Cuadrante Izquierda
+      if (this.cells[this.positionActivate[0]][this.positionActivate[1] - 1].hunt === true) {
+        olor = true
+      }
+
+      if (this.cells[this.positionActivate[0]][this.positionActivate[1] - 1].wells === true) {
+        brisa = true
+      }
+
+      if (this.cells[this.positionActivate[0]][this.positionActivate[1] - 1].gold === true) {
+        resplandor = true
+      }
+    }
+
+
+
+    if (olor) {
+      this.historial.push("Siente un olor")
+    }
+    if (brisa) {
+      this.historial.push("Siente una brisa")
+    }
+    if (resplandor) {
+      this.historial.push("Ve un resplandor")
+    }
+    if (pared) {
+      this.historial.push("Hay un muro")
+    }
+  }
+
   checkStatus(key){
     if (key === 'KeyD') {
       this.historial.push("Movimiento a la derecha")
       this.checkDead()
+      this.checkData()
     }
     if (key === 'KeyA') {
       this.historial.push("Movimiento a la izquierda")
       this.checkDead()
+      this.checkData()
     }
     if (key === 'KeyW') {
       this.historial.push("Movimiento hacia arriba")
       this.checkDead()
+      this.checkData()
     }
     if (key === 'KeyS') {
       this.historial.push("Movimiento hacia abajo")
       this.checkDead()
+      this.checkData()
     }
 
 

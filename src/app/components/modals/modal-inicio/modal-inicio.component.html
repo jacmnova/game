@@ -1,0 +1,78 @@
+<div class="modal-body">
+
+  <h1>Bienvenido</h1>
+  <h1>Como jugar?</h1>
+
+  <div class="row">
+    <div class="col-md-12">
+      El objetivo es encontrar el oro y salir lo mas rapido posible,
+      en el camino tienes que evitar encontrar el hunt o caer en un pozo
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mt-3">
+      <table>
+        <thead>
+        <tr>
+          <td>
+            Tecla
+          </td>
+          <td>
+            Movimiento
+          </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>W</td>
+          <td><i class="fas fa-arrow-up"></i>  Movimiento hacia arriba</td>
+        </tr>
+        <tr>
+          <td>D</td>
+          <td>  <i class="fas fa-arrow-right"></i> Movimiento ala derecha</td>
+        </tr>
+        <tr>
+          <td>S</td>
+          <td>  <i class="fas fa-arrow-down"></i> Movimiento hacia abajo </td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td> <i class="fas fa-arrow-left"></i> Movimiento a la izquierda</td>
+        </tr>
+        <tr>
+          <td>Tecla espacio</td>
+          <td> Tirar flecha</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <span>En la consola muestra los movimientos</span>
+    </div>
+
+    <div class="col-md-12 mt-3">
+      <ul>
+        <li>Cuando estas cerca del oro dectecta un resplandor  </li>
+        <li>Cuando estas cerca del hunt dectecta un olor  </li>
+        <li>Cuando estas cerca del pozo dectecta una brisa  </li>
+        <li>Cuando estas cerca del limite dectecta una pared  </li>
+        <li>Cuando tira una flecha y mata el hunt detecta un grito  </li>
+        <li>Cuando tira una flecha y no mata el hunt detecta un muro  </li>
+      </ul>
+
+    </div>
+
+    <div class="col-md-12 mt-3">
+      <span>El jugador tiene un numero de flechas que puede lanzar y ver si mata el hunt</span>
+    </div>
+
+    <div class="col-md-12 mt-3 text-aling-center">
+      <button class="btn-hunt" (click)="modalRef.close()">INICIAR JUEGO </button>
+
+    </div>
+  </div>
+</div>
