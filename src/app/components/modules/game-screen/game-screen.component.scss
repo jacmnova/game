@@ -74,5 +74,58 @@ td {
   display: flex;
 }
 
+.terminal {
+  background: #ffc6c7;
+  border: 2px solid #33272a;
+
+}
+
+.terminal-inner {
+  background: #FFFFFF;
+  max-height: 45vh;
+  height: 45vh;
+  overflow: hidden;
+  overflow-y: auto;
+  border-radius: 5px;
+}
+.dot {
+  width: 15px;
+  height: 15px;
+  background: #FFF;
+  border-radius: 100%;
+  border: 2px solid;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.btn-hunt {
+  padding: 10px !important;
+  font-size: 10px !important;
+  text-transform: uppercase !important;
+  display: flex !important;
+}
+
+.icon-btn-hunt {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.body-game {
+  display: flex;
+  overflow: auto;
+}
+
+.time-letter {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.text-terminal {
+  font-family: 'Roboto Condensed', cursive;
+}
+
+
+
 
 

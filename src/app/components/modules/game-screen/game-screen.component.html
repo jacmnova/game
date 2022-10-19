@@ -1,16 +1,21 @@
 <div class="row mt-5 closedGame" id="section-game" >
   <div class="col-md-12">
     <div class="card material-card">
-      <div class="card-body">
+      <div class="card-header d-flex justify-content-between">
+        <div class="btn-hunt">
+          <i class="fas fa-arrow-left icon-btn-hunt"></i> Volver a configuracion
+        </div>
+
+        <div class="btn-hunt" (click)="loadGame()">
+          <i class="fas fa-redo icon-btn-hunt"></i> Reiniciar Partida
+        </div>
+
+      </div>
+      <div class="card-body body-game">
         <div class="container">
 
-          <div class="row">
-            <div class="col-md-12">
-              <h2 class="title">Comienza el juego! </h2>
-            </div>
-          </div>
 
-          <div class="row">
+          <div class="row mb-5">
             <div class="col-md-6">
               <table>
                 <tr *ngFor="let line of cells">
@@ -32,7 +37,32 @@
               </table>
             </div>
             <div class="col-md-6">
-              <p *ngFor="let item of historial"> {{ item }}</p>
+              <div class="card terminal">
+                <div class="card-header d-flex justify-content-between">
+                  <div class="dot-section d-flex">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                  </div>
+
+                  <div class="timer">
+                    <span class="time-letter">TIEMPO: {{time}}</span>
+                  </div>
+
+                </div>
+                <div class="card-body">
+                  <div class="container terminal-inner" id="terminal">
+                    <div class="row mt-2" *ngFor="let item of historial">
+                      <div class="col-md-12">
+                        <span class="text-terminal"><i class="fas fa-angle-right"></i> {{ item }}</span>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+
             </div>
           </div>
 

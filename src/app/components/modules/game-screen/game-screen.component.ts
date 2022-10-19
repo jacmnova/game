@@ -12,18 +12,23 @@ export class GameScreenComponent implements OnInit {
   cells = []
   positionActivate = []
   huntPos = []
-
   historial = []
+
+  //Timmer
+  time: number = 0;
+  interval;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.historial.push("--> Comienza el juego")
+
   }
 
   ngOnChanges(): void{
+    this.loadGame()
+  }
 
-    console.log(this.parameters, 'Armando el tablero');
+  loadGame() {
     for(var i=0; i < this.parameters.nroCell; i++) {
       this.cells[i] = new Array(this.parameters.nroCell);
       for (var y=0; y < this.parameters.nroCell; y++) {
@@ -57,8 +62,11 @@ export class GameScreenComponent implements OnInit {
     this.controlsEnable()
     this.generateWells()
     this.generateGold()
-
-
+    this.historial.push("Comienza el juego")
+    this.pauseTimer()
+    this.startTimer()
+    this.time = 0;
+    this.historial = []
   }
 
   createHunt() {
@@ -143,37 +151,39 @@ export class GameScreenComponent implements OnInit {
     return Math.floor(Math.random() * (max - min) ) + min;
   }
 
+  checkDead() {
+    if (this.cells[this.positionActivate[0]][this.positionActivate[1]].hunt === true) {
+      this.historial.push("HUNT PERDISTE")
+      this.pauseTimer();
+    }
+
+    if (this.cells[this.positionActivate[0]][this.positionActivate[1]].wells === true) {
+      this.historial.push("WELLS PERDISTE")
+      this.pauseTimer();
+    }
+
+    if (this.cells[this.positionActivate[0]][this.positionActivate[1]].gold === true) {
+      this.historial.push("GOLD Regresa")
+      this.pauseTimer();
+    }
+  }
+
   checkStatus(key){
     if (key === 'KeyD') {
-      this.historial.push("--> Movimiento a la derecha")
-      if (this.cells[this.positionActivate[0]][this.positionActivate[1] + 1]) {
-        console.log("CONDICION 1")
-        if (this.cells[this.positionActivate[0]][this.positionActivate[1] + 1].wells === true){
-          this.historial.push("--> Percibe una brisa")
-        }
-        if (this.cells[this.positionActivate[0]][this.positionActivate[1] + 1].hunt === true){
-          this.historial.push("--> Percibe un olor")
-        }
-
-        if (this.cells[this.positionActivate[0]][this.positionActivate[1] + 1].gold === true){
-          this.historial.push("--> Percibe un brillo")
-        }
-      } else {
-        this.historial.push("--> PARED")
-      }
-
-
-
-
+      this.historial.push("Movimiento a la derecha")
+      this.checkDead()
     }
     if (key === 'KeyA') {
-      this.historial.push("--> Movimiento a la izquierda")
+      this.historial.push("Movimiento a la izquierda")
+      this.checkDead()
     }
     if (key === 'KeyW') {
-      this.historial.push("--> Movimiento hacia arriba")
+      this.historial.push("Movimiento hacia arriba")
+      this.checkDead()
     }
     if (key === 'KeyS') {
-      this.historial.push("--> Movimiento hacia abajo")
+      this.historial.push("Movimiento hacia abajo")
+      this.checkDead()
     }
 
 
@@ -186,6 +196,7 @@ export class GameScreenComponent implements OnInit {
         if (this.positionActivate[1] >= this.parameters.nroCell - 1){
           return
         } else {
+
           this.cells[this.positionActivate[0]][this.positionActivate[1]].checked = false
           this.cells[this.positionActivate[0]][this.positionActivate[1] + 1].checked = true
           this.cells[this.positionActivate[0]][this.positionActivate[1] + 1].pass = true
@@ -199,13 +210,14 @@ export class GameScreenComponent implements OnInit {
         if (this.positionActivate[1] - 1 <  0){
           return
         } else {
-          this.checkStatus('KeyA');
+
           this.cells[this.positionActivate[0]][this.positionActivate[1]].checked = false
           this.cells[this.positionActivate[0]][this.positionActivate[1] - 1].checked = true
           this.cells[this.positionActivate[0]][this.positionActivate[1] - 1].pass = true
 
           this.positionActivate[0] = this.positionActivate[0]
           this.positionActivate[1] = this.positionActivate[1] - 1
+          this.checkStatus('KeyA');
         }
 
 
@@ -215,12 +227,13 @@ export class GameScreenComponent implements OnInit {
         if (this.positionActivate[0] - 1 <  0){
           return;
         } else {
-          this.checkStatus('KeyW');
+
           this.cells[this.positionActivate[0]][this.positionActivate[1]].checked = false
           this.cells[this.positionActivate[0] - 1][this.positionActivate[1]].checked = true
           this.cells[this.positionActivate[0] - 1][this.positionActivate[1]].pass = true
           this.positionActivate[0] = this.positionActivate[0] - 1
           this.positionActivate[1] = this.positionActivate[1]
+          this.checkStatus('KeyW');
         }
 
       }
@@ -228,16 +241,34 @@ export class GameScreenComponent implements OnInit {
         if (this.positionActivate[0] >= this.parameters.nroCell - 1){
           return;
         } else {
-          this.checkStatus('KeyS');
+
           this.cells[this.positionActivate[0]][this.positionActivate[1]].checked = false
           this.cells[this.positionActivate[0] + 1][this.positionActivate[1]].checked = true
           this.cells[this.positionActivate[0] + 1][this.positionActivate[1]].pass = true
           this.positionActivate[0] = this.positionActivate[0] + 1
           this.positionActivate[1] = this.positionActivate[1]
+          this.checkStatus('KeyS');
         }
 
       }
+
     });
+  }
+
+  async startTimer() {
+    setTimeout(() => {
+      this.interval = setInterval(() => {
+        this.time++
+        var terminal = document.getElementById("terminal");
+
+        terminal.animate({ scrollTop: 99999999}, 1)
+      },1000)
+    }, 500000000000000000000000000000000);
+
+  }
+
+  pauseTimer() {
+    clearInterval(this.interval);
   }
 
 }
